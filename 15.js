@@ -4,10 +4,7 @@
 // Given a year, return the century it is in.
 
 function century(year) {
-  if (year % 100 === 0) {
-    return parseInt(year / 100);
-  }
-
+  if (year % 100 === 0) {return parseInt(year / 100);}2
   return (String(year).length === 2) ? 1 : parseInt(year / 100) + 1;
 
   // return Math.ceil(year/100);  // я не знал про ceil...
