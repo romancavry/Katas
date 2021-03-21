@@ -8,10 +8,10 @@
 // Каждый боец будет объектом / экземпляром Fighter. См. Класс Истребителя ниже на выбранном вами языке.
 // И health, и damagePerAttack (damage_per_attack для python) будут целыми числами больше 0. Вы можете изменять объекты Fighter.
 
-function Fighter(name, hp, damage) {
+function Fighter(name, health, damagePerAttack) {
     this.name = name;
-    this.hp = hp;
-    this.damage = damage;
+    this.health = health;
+    this.damagePerAttack = damagePerAttack;
 }
 
 function declareWinner(fighter1, fighter2, firstAttacker) {
@@ -19,16 +19,26 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
     (fighter1.name === firstAttacker) ? firstAttacker = fighter1.name : firstAttacker = fighter2.name;
     
     while (result === undefined) {
-        (fighter1.name === firstAttacker) ? fighter2.hp -= fighter1.damage : fighter1.hp -= fighter2.damage;
+        (fighter1.name === firstAttacker) ? fighter2.health -= fighter1.damagePerAttack : fighter1.health -= fighter2.damagePerAttack;
 
-        if (fighter1.hp <= 0 || fighter2.hp <= 0) {
-            result = Math.max(fighter1.hp, fighter2.hp);
-            return (result === fighter1.hp) ? fighter1.name : fighter2.name;
+        if (fighter1.health <= 0 || fighter2.health <= 0) {
+            result = Math.max(fighter1.health, fighter2.health);
+            return (result === fighter1.health) ? fighter1.name : fighter2.name;
         }        
         
         (firstAttacker === fighter1.name) ? firstAttacker = fighter2.name : firstAttacker = fighter1.name; 
     }  
 }
+
+//   let fac1 = Math.ceil( fighter1.health / fighter2.damagePerAttack );
+//   let fac2 = Math.ceil( fighter2.health / fighter1.damagePerAttack );
+//   if (fac1 < fac2) {
+//     return fighter2.name;
+//   } else if(fac2 < fac1) {
+//     return fighter1.name;
+//   } else {
+//     return firstAttacker;
+//   }
 
 
 // 2й параметр - здоровье
