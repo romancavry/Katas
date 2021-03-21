@@ -8,16 +8,35 @@
 // Каждый боец будет объектом / экземпляром Fighter. См. Класс Истребителя ниже на выбранном вами языке.
 // И health, и damagePerAttack (damage_per_attack для python) будут целыми числами больше 0. Вы можете изменять объекты Fighter.
 
-function declareWinner(fighter1, fighter2, firstAttacker) {
-    
+function Fighter(name, hp, damage) {
+    this.name = name;
+    this.hp = hp;
+    this.damage = damage;
 }
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+    let result;
+    (fighter1.name === firstAttacker) ? firstAttacker = fighter1.name : firstAttacker = fighter2.name;
+    
+    while (result === undefined) {
+        (fighter1.name === firstAttacker) ? fighter2.hp -= fighter1.damage : fighter1.hp -= fighter2.damage;
+
+        if (fighter1.hp <= 0 || fighter2.hp <= 0) {
+            result = Math.max(fighter1.hp, fighter2.hp);
+            return (result === fighter1.hp) ? fighter1.name : fighter2.name;
+        }        
+        
+        (firstAttacker === fighter1.name) ? firstAttacker = fighter2.name : firstAttacker = fighter1.name; 
+    }  
+}
+
 
 // 2й параметр - здоровье
 // 3й - урон за один удар
 
+console.log(declareWinner(new Fighter("Harald", 20, 5), new Fighter("Harry", 5, 4), "Harry")) // "Harald"
 console.log(declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harry", 5, 4), "Lew")) // "Lew"
 console.log(declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harry", 5, 4), "Harry")) // "Harry"
-console.log(declareWinner(new Fighter("Harald", 20, 5), new Fighter("Harry", 5, 4), "Harry")) // "Harald"
 console.log(declareWinner(new Fighter("Harald", 20, 5), new Fighter("Harry", 5, 4), "Harald")) // "Harald"
 console.log(declareWinner(new Fighter("Jerry", 30, 3), new Fighter("Harald", 20, 5), "Jerry")) // "Harald"
 console.log(declareWinner(new Fighter("Jerry", 30, 3), new Fighter("Harald", 20, 5), "Harald")) // "Harald"
