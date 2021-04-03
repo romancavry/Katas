@@ -8,17 +8,27 @@
 // Если входная строка пуста, вернуть пустую строку. Слова во входной строке будут содержать только действительные последовательные числа.
 
 function order(words){
-  // let arr = words.split(' ');
-  let arr = words.split(/\s+/);
-  // for (let i = 0; i < arr.length; i++) {
-  //   for (let j = 0; j < arr[i].length; j++) {
-  //     if (numbers.indexOf(arr[i][j]) != -1) {
+  let arr = words.split(' ');
+  let resultArr = [];
 
-  //     }
-  //   }
-  // }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].includes('1')) {
+      resultArr.push(arr.splice(1, 1));
+      break;
+    } else if (arr[i].includes('2')) {
+      resultArr.push(arr.splice(2, 1));
+      break;
+    } else if (arr[i].includes('3')) {
+      resultArr.push(arr.splice(3, 1));
+      break;
+    } else if (arr[i].includes('4')) {
+      resultArr.push(arr.splice(4, 1));
+      break;
+    } 
+    console.log(resultArr);
+  }
 
-  return arr;
+  return resultArr;
 }  
 
 // можно извлечь цифру из строки (str.substr) -> сложить 

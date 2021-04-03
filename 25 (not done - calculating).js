@@ -8,17 +8,50 @@
 // The most outer function represents the left operand, the most inner function represents the right operand
 // Division should be integer division. For example, this should return 2, not 2.666666..
 
+function zero() {
+	return arguments.length ? arguments[0](0) : 0;
+}
+function one() {
+	return arguments.length ? arguments[0](1) : 1;
+}
+function two() {
+  return arguments.length ? arguments[0](2) : 2;
+}
+function three() {
+	return arguments.length ? arguments[0](3) : 3;
+}
+function four() {
+	return arguments.length ? arguments[0](4) : 4;
+}
+  function five() {
+	return arguments.length ? arguments[0](5) : 5;
+  }
+  function six() {
+	return arguments.length ? arguments[0](6) : 6;
+  }
+  function seven() {
+	return arguments.length ? arguments[0](7) : 7;
+  }
+  function eight() {
+	return arguments.length ? arguments[0](8) : 8;}
+function nine() {
+  return arguments.length ? arguments[0](9) : 9;
+}
 
-function zero(operation) { return expression(0, operation); }
-function one(operation) { return expression(1, operation); }
-function two(operation) { return expression(2, operation); }
-function three(operation) { return expression(3, operation); }
-function four(operation) { return expression(4, operation); }
-function five(operation) { return expression(5, operation); }
-function six(operation) { return expression(6, operation); }
-function seven(operation) { return expression(7, operation); }
-function eight(operation) { return expression(8, operation); }
-function nine(operation) { return expression(9, operation); }
+function plus(b) {
+  return function(a) { return Math.floor(a + b) }
+}
+function minus(b) {
+  return function(a) { return Math.floor(a - b) }
+}
+function times(b) {
+  return function(a) { return Math.floor(a * b) }
+}
+function dividedBy(b) {
+  return function(a) { return Math.floor(a / b) }
+}
+
+
 
 function plus(x) {
 	return function(y) {
