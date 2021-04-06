@@ -3,14 +3,30 @@
 // Реализуйте функцию unique_in_order, которая принимает в качестве аргумента последовательность и возвращает список элементов без каких-либо элементов с одинаковым значением рядом друг с другом и с сохранением исходного порядка элементов.
 
 var uniqueInOrder=function(iterable){
-    let resultArr = [];
+//     if (typeof iterable !== 'string') {iterable = iterable.join('')}
+//     iterable = iterable.split(/(.)\1+/g).join('').split('');
 
-    for (let i = 0; i < iterable.length; i++) {
-        if (!resultArr.includes(iterable[i])) {
-            resultArr.push(iterable[i])
+//     if (!isNaN(Number(iterable[0]))) {
+//         iterable = iterable.map((e) => {
+//             return e = Number(e);
+//         })
+//     }
+
+// (.): Совпадение с любым персонажем и захват в группе # 1
+// \1+: Совпадение символов 1+ такое же, как в группе захвата # 1
+
+//     return iterable;
+
+    let result = [];
+    let last;
+
+    for (let i = 0; i < it.length; i++) {
+        if (it[i] !== last) {
+            result.push(last = it[i]);
         }
     }
-    return resultArr;
+
+    return result;
 }
 
 console.log(uniqueInOrder('AAAABBBCCDAABBB'))  // ['A','B','C','D','A','B']
