@@ -2,6 +2,10 @@
 // Take every 2nd char from the string, then the other chars, that are not every 2nd char, and concat them as new String.
 // Do this n times!
 
+// Для построения зашифрованной строки:
+// Возьмите каждый второй символ из строки, затем другие символы, которые не являются каждым вторым символом, и объедините их как новую строку.
+// Сделайте это n раз!
+
 function encrypt(text, n) {
     if (n === 0 || n === -1 || text === null || text.length === 0) {
         return text;

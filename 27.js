@@ -8,31 +8,16 @@
 // Если входная строка пуста, вернуть пустую строку. Слова во входной строке будут содержать только действительные последовательные числа.
 
 function order(words){
-  let arr = words.split(' ');
-  let resultArr = [];
+  let sorted = 
+    words.split(' ')
+    .sort((a,b) => a.match(/\d/) -  b.match(/\d/))
+    .join(' ')
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].includes('1')) {
-      resultArr.push(arr.splice(1, 1));
-      break;
-    } else if (arr[i].includes('2')) {
-      resultArr.push(arr.splice(2, 1));
-      break;
-    } else if (arr[i].includes('3')) {
-      resultArr.push(arr.splice(3, 1));
-      break;
-    } else if (arr[i].includes('4')) {
-      resultArr.push(arr.splice(4, 1));
-      break;
-    } 
-    console.log(resultArr);
-  }
-
-  return resultArr;
+  return sorted;
 }  
 
-// можно извлечь цифру из строки (str.substr) -> сложить 
+// можно извлечь цифру из строки (str.substr) -> сложить
 
 console.log(order("is2 Thi1s T4est 3a")) //  "Thi1s is2 3a T4est"
-// console.log(order("4of Fo1r pe6ople g3ood th5e the2")) // "Fo1r the2 g3ood 4of th5e pe6ople"
+console.log(order("4of Fo1r pe6ople g3ood th5e the2")) // "Fo1r the2 g3ood 4of th5e pe6ople"
 console.log(order("")) // ""
